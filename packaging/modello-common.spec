@@ -1,4 +1,4 @@
-Name:       html5_UI_Common
+Name:       Modello_Common
 Summary:    A proof of concept pure html5 UI
 Version:    0.0.1
 Release:    1
@@ -25,7 +25,6 @@ rm -rf %{buildroot}
 %make_install
 
 %post
-    #wrt-installer -i /opt/usr/apps/.preinstallWidgets/html5_UI_Common.wgt;
 
 %postun
     #TODO: Delete the common files
