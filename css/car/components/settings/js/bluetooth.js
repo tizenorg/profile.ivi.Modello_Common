@@ -148,7 +148,7 @@ var Bluetooth = function() {
 				}, function(e) {
 					console.log('Error: bluetooth pair failed: ', e);
 					self._restartRefreshDevicesInterval();
-					alert("An error occured while pairing with " + device.name);
+					//alert("An error occured while pairing with " + device.name);
 					hideLoadingSpinner("Pairing");
 				});
 			} else {
@@ -161,7 +161,7 @@ var Bluetooth = function() {
 				}, function(e) {
 					console.log('Error: bluetooth unpairing failed: ' + e);
 					self._restartRefreshDevicesInterval();
-					alert("An error occured while unpairing from " + device.name);
+					//alert("An error occured while unpairing from " + device.name);
 					hideLoadingSpinner("Unpairing");
 				});
 			}
@@ -490,7 +490,11 @@ Bluetooth.prototype.getDevice = function(device) {
 			self.selectedDevice(dev);
 		}
 	}, function(error) {
-		// console.log ("Could not get device info:", error);
+		console.log ("Could not get device info:", error);
+		console.log ("removing device:", device.address);
+		self.removeDevice(device.address);
+		self.sortDevices();
+		self.saveBluetooth();
 	});
 };
 
