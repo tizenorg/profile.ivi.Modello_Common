@@ -1,7 +1,9 @@
+* Wed Apr 23 2014 brianjjones <brian.j.jones@intel.com> submit/tizen/20140417.181410@01a5441
+- Fix for TIVI-3061 - WIFI sometimes can't be turned on/off
+
 * Mon Apr 14 2014 brianjjones <brian.j.jones@intel.com> submit/tizen/20140404.163702@b99f3c5
 - Pairing fixes and fixing images
 - Changing file names
-- Initial commit of the common code for the Modello UI
 
 * Thu Apr 03 2014 brianjjones <brian.j.jones@intel.com> 26c776b
 - Initial commit of the common code for the Modello UI

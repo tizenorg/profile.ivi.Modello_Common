@@ -149,6 +149,8 @@ var wsAPI = (function() {
 		if (!this.connected) {
 			if (error_cb !== undefined) {
 				error_cb(ERROR_SETTINGSD_DISCONNECTED);
+				//Attempt to reconnect to settings-daemon
+				reconnect();
 			}
 			return;
 		}
