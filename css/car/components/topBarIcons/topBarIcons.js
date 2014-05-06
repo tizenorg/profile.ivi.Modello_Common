@@ -213,7 +213,7 @@ function launchApplication(id) {
 
 					for (i = 0; i < list.length; i++) {
 						var app = list[i];
-						if (app.id.indexOf('html5POC') >= 0) {
+						if (app.id.indexOf('Modello') >= 0) {
 							var newApp = {
 								id: app.id,
 								appName: app.name,
@@ -224,7 +224,7 @@ function launchApplication(id) {
 								running: TopBarIcons.runningAppName === app.id
 							};
 
-							if (app.id === "html5POC04.HomeScreen") {
+							if (app.id === "Modello005.HomeScreen") {
 								homeScreenApp = newApp;
 							} else {
 								//app filter to block adding some apps into topbar
