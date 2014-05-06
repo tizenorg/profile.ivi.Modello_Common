@@ -1,3 +1,6 @@
+* Tue May 06 2014 brianjjones <brian.j.jones@intel.com> submit/tizen/20140424.173419@4b787b3
+- Updated to work with Crosswalk.  TIVI-3073
+
 * Wed Apr 23 2014 brianjjones <brian.j.jones@intel.com> submit/tizen/20140417.181410@01a5441
 - Fix for TIVI-3061 - WIFI sometimes can't be turned on/off
 
