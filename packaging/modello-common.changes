@@ -1,3 +1,6 @@
+* Thu May 22 2014 brianjjones <brian.j.jones@intel.com> submit/tizen_ivi/20140508.165053@655f898
+- Fixes for IVI-3190 - To get things to render normally
+
 * Tue May 06 2014 brianjjones <brian.j.jones@intel.com> submit/tizen/20140424.173419@4b787b3
 - Updated to work with Crosswalk.  TIVI-3073
 

@@ -124,9 +124,7 @@ function changeCssBgImageColor(selector, bgcolor) {
         img, ctx, w, h;
 
     if (imageSource !== undefined) {
-        console.log(imageSource);
         imageSource = imageSource.replace(patt, '');
-
         img = new Image();
         ctx = document.createElement('canvas').getContext('2d');
 
@@ -144,6 +142,8 @@ function changeCssBgImageColor(selector, bgcolor) {
 
         img.src = imageSource;
     }
+    else
+	console.log("Modello app icon not defined");
 }
 /**
 * Function loads teplate HTML code into script element with name provided as paramater.

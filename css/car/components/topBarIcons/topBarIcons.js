@@ -213,22 +213,24 @@ function launchApplication(id) {
 
 					for (i = 0; i < list.length; i++) {
 						var app = list[i];
-						if (app.id.indexOf('Modello') >= 0) {
+						var subName = app.name.substr(8);
+						subName = subName.replace(/\./g, "_").replace(/\ /g, "_");
+						if (app.name.indexOf('Modello') >= 0) {
 							var newApp = {
 								id: app.id,
 								appName: app.name,
-								style: "background-image: url('file://" + app.iconPath + "');",
+								style: "background-image: url('icons/" + subName + "_icon.png');",
 								iconPath: app.iconPath,
 								css: "app_" + app.id.replace(/\./g, "_").replace(/\ /g, "_"),
 								installed: true,
 								running: TopBarIcons.runningAppName === app.id
 							};
 
-							if (app.id === "Modello005.HomeScreen") {
+							if (app.name === "Modello Homescreen") {
 								homeScreenApp = newApp;
 							} else {
 								//app filter to block adding some apps into topbar
-								if (app.id === 'html5POC02.AMBSimulator') {
+								if (app.name === 'Modello AMB Simulator') {
 									extraAppsModel.push(newApp);
 								} else if (modelData.length < 7) {
 									modelData.push(newApp);
@@ -283,11 +285,6 @@ function launchApplication(id) {
 					}
 			} catch (exc) {
 				console.error(exc.message);
-			} finally {
-				// Workaround due to https://bugs.tizen.org/jira/browse/TIVI-2018
-				window.setTimeout(function() {
-					TopBarIcons._getApps();
-				}, 1000);
 			}
 		},
 
@@ -299,7 +296,6 @@ function launchApplication(id) {
 		 */
 		renderApps: function() {
 			$(".topBarIcons").empty();
-			//$(".topBarIcons").css("display", "none");
 
 			template.compile(topBarAplicationsModel, "./css/car/components/topBarIcons/templates/topBarIconsDelegate.html", ".topBarIcons", function() {
 				var j = 0;
@@ -310,9 +306,6 @@ function launchApplication(id) {
 						changeCssBgImageColor("." + topBarAplicationsModel[j].css, ThemeKeyColor);
 					}
 				}
-				setTimeout(function() {
-					//	$(".topBarIcons").css("display", "block");
-				}, 200);
 			});
 		},
 		initLaunchingAppsByVoiceRecognition: function() {
