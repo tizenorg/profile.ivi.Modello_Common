@@ -6,6 +6,7 @@ Group:      Applications/System
 License:    Apache 2.0
 URL:        http://www.tizen.org
 Source0:    %{name}-%{version}.tar.bz2
+BuildRequires: zip
 
 %description
 A proof of concept pure html5 UI
@@ -14,11 +15,12 @@ A proof of concept pure html5 UI
 %setup -q -n %{name}-%{version}
 
 %build
+make wgtPkg
 
 %install
-rm -rf %{buildroot}
 %make_install
 
 %files
 %defattr(-,root,root,-)
-/opt/usr/apps/_common/*
+/opt/usr/apps/.preinstallWidgets/Modello_Common.wgt
+/usr/share/tizen-web-ui-fw/modello/common/*
