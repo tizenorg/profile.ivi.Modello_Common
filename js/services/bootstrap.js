@@ -154,13 +154,14 @@ Bootstrap.prototype.initIncomingCall = function(callback) {
 								var appId = getAppByID('intelPoc15.phone');
 
 								var contact;
+								var activeCall = tizen.phone.activeCall();
 								if (!!result.contact.name) {
 									contact = result.contact;
 								} else {
 									contact = {
 										phoneNumbers: [{
 											/* jshint camelcase: false */
-											number: tizen.phone.activeCall.line_id
+											number: activeCall.line_id
 											/* jshint camelcase: true */
 										}]
 

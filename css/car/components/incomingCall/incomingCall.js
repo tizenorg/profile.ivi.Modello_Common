@@ -97,7 +97,8 @@ IncomingCall.prototype.acceptIncommingCall = function() {
 		/* if app is phone */
 	} else {
 		if (typeof(tizen) !== 'undefined' && tizen.phone) {
-			acceptCall(tizen.phone.activeCall.contact);
+			var activeCall = tizen.phone.activeCall();
+			acceptCall(activeCall.contact);
 		}
 	}
 };
