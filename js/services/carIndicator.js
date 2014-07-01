@@ -466,10 +466,13 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 					if (mapping.callBackPropertyName.toLowerCase() === prop.toLowerCase() && !mapping.subscribeCount) {
 						mapping.subscribeCount = typeof (mapping.subscribeCount) === 'undefined' ? 0 : mapping.subscribeCount++;
 
-						if (typeof (tizen) !== 'undefined') {
+						if (typeof (tizen) !== 'undefined' && tizen.vehicle !== undefined && tizen.vehicle[subscribeName] !== undefined) {
 							if (!(subscribeName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
-								var setUpData = tizen.vehicle[subscribeName].get(zone);
-								self.onDataUpdate(setUpData, self, id);
+								if (tizen.vehicle[subscribeName]){
+									var setUpData = tizen.vehicle[subscribeName].get(zone);
+									if (setUpData !== undefined)
+										self.onDataUpdate(setUpData, self, id);
+								}
 							}
 							tizen.vehicle[subscribeName].subscribe(subscribeCallback, zone);
 						} else {
@@ -493,7 +496,10 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 CarIndicator.prototype.onDataUpdate = function(data, self, lisenersID) {
 	"use strict";
 	if (data !== undefined) {
-		var zone = data.zone.toString(2);
+		if (data.zone !== undefined);
+			var zone = data.zone.toString(2);
+		else
+			var zone = "0";
 		var mapping;
 
 		for ( var property in data) {
