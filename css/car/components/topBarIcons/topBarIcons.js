@@ -226,7 +226,7 @@ function launchApplication(id) {
 								running: TopBarIcons.runningAppName === app.id
 							};
 
-							if (app.name === "Modello Homescreen") {
+							if (app.name === "Modello Home Screen") {
 								homeScreenApp = newApp;
 							} else {
 								//app filter to block adding some apps into topbar
