@@ -496,7 +496,7 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 CarIndicator.prototype.onDataUpdate = function(data, self, lisenersID) {
 	"use strict";
 	if (data !== undefined) {
-		if (data.zone !== undefined);
+		if (data.zone !== undefined)
 			var zone = data.zone.toString(2);
 		else
 			var zone = "0";
