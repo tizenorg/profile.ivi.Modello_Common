@@ -54,26 +54,8 @@ var Speech = (function() {
 		console.log("Speech init voice recognition called.");
 		if (typeof (tizen) !== 'undefined' && typeof (tizen.speech) !== 'undefined' && typeof (tizen.speech.setCBListener) !== 'undefined') {
 			try {
-				var speechEventListener = {
-					onaudiostart : function() {
-						console.log("Speech: onaudiostart received");
-					},
-					onsoundstart : function() {
-						console.log("Speech: onsoundstart received");
-					},
-					onspeechstart : function() {
-						console.log("Speech: onspeechstart received");
-					},
-					onspeechend : function() {
-						console.log("Speech: onspeechend received");
-					},
-					onsoundend : function() {
-						console.log("Speech: onsoundend received");
-					},
-					onaudioend : function() {
-						console.log("Speech: onaudioend received");
-					},
-					onresult : function(result) {
+
+				tizen.speech.setCBListener(function(result) {
 						console.log("Speech: onresult received");
 						for ( var i = 0; i < result.length; i++) {
 							console.log("Speech: forloop, command = " + result[i]);
@@ -139,21 +121,7 @@ var Speech = (function() {
 								break;
 							}
 						}
-					},
-					onnomatch : function(result) {
-						console.log("Speech: onnomatch received ");
-					},
-					onerror : function(error) {
-						console.log("Speech: onerror received");
-					},
-					onstart : function() {
-						console.log("Speech: onstart received");
-					},
-					onend : function() {
-						console.log("Speech: onend received");
-					}
-				};
-				tizen.speech.setCBListener(speechEventListener);
+					});
 			} catch (err) {
 				console.log("Speech set callback listener FAILED + " + err.message);
 				console.log(err);

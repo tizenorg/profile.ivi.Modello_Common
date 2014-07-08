@@ -1,3 +1,6 @@
+* Mon Jul 07 2014 brianjjones <brian.j.jones@intel.com> accepted/tizen/ivi/20140702.153329-1-g961a50d
+- Changes to use the new speech API - TC-662
+
 * Tue Jul 01 2014 brianjjones <brian.j.jones@intel.com> submit/tizen_ivi/20140701.201509-1-g13d7b63
 - Adding some checks to ensure objects aren't undefined before using them
 - Removing semicolon
