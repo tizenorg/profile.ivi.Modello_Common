@@ -1,3 +1,6 @@
+* Tue Jul 22 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20140708.220226-1-g4495da4
+- Temporary workaround for TC-1388.  Exits the apps rather than hiding them
+
 * Mon Jul 07 2014 brianjjones <brian.j.jones@intel.com> accepted/tizen/ivi/20140702.153329-1-g961a50d
 - Changes to use the new speech API - TC-662
 

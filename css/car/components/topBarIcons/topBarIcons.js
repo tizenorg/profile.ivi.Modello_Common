@@ -20,6 +20,8 @@ var topBarAplicationsModel = [];
  */
 var extraAppsModel = [];
 
+var appToHide;
+
 /**
  * The callback to be invoked when the application was not launched successfully.
  *
@@ -91,7 +93,9 @@ function getAppByName(appName) {
 function onLaunchSuccess() {
 	"use strict";
 	console.log("App launched succesfully...");
-	tizen.application.getCurrentApplication().hide();
+
+	if (appToHide && appToHide.name !== "Modello Homescreen")
+		appToHide.exit();
 }
 
 /**
@@ -119,6 +123,7 @@ function launchApplication(id) {
 	var app = getAppByID(id);
 	if ( !! app) {
 		if (app.installed && !app.running) {
+			appToHide = tizen.application.getCurrentApplication();
 			tizen.application.launch(app.id, onLaunchSuccess, onError);
 		} else if (app.running) {
 			console.log("Application is running!");
