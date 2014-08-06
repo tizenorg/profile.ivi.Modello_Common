@@ -277,10 +277,15 @@
                 }
 
                 if (AudioPlayer.volumeControlSelector !== null) {
+                    var volStart = 50;
+                    if(localStorage && localStorage.volume)
+                    {
+                        volStart = localStorage.volume;
+                    }
                     $(AudioPlayer.volumeControlSelector).noUiSlider({
                         range: [0, 100],
                         step: 1,
-                        start: 50,
+                        start: volStart,
                         handles: 1,
                         connect: "lower",
                         orientation: "horizontal",
@@ -291,7 +296,7 @@
                             AudioPlayer.setAudioVolume(volumeSlider);
                         }
                     });
-                    AudioPlayer.setAudioVolume(50);
+                    AudioPlayer.setAudioVolume(volStart);
                 }
 
                 if (AudioPlayer.timeProgressBarSelelector !== null) {
@@ -509,6 +514,10 @@
                 }
                 AudioPlayer.volume = volume;
                 AudioPlayer.player.volume =  volume / 100;
+                if(localStorage)
+                {
+                    localStorage.volume = volume;
+                }
             },
             /**
              * Updates the audio info panel (artist, album, name).
