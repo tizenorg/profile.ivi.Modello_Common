@@ -1,3 +1,6 @@
+* Mon Aug 11 2014 Jimmy Huang <jimmy.huang@intel.com> submit/tizen_3.0.m14.2_ivi/20140723.000002-3-g042024f
+- Fix Modello to use tizen.bluetooth instead of tizen.bt
+
 * Tue Jul 22 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20140708.220226-1-g4495da4
 - Temporary workaround for TC-1388.  Exits the apps rather than hiding them
 

@@ -267,37 +267,37 @@ var Bluetooth = function() {
 	this.getDeviceClassStr = function(deviceClass) {
 		var classStr = "";
 		switch (deviceClass.major) {
-		case tizen.bt.deviceMajor.MISC:
+		case tizen.bluetooth.deviceMajor.MISC:
 			classStr = "MISC";
 			break;
-		case tizen.bt.deviceMajor.COMPUTER:
+		case tizen.bluetooth.deviceMajor.COMPUTER:
 			classStr = "COMPUTER";
 			break;
-		case tizen.bt.deviceMajor.PHONE:
+		case tizen.bluetooth.deviceMajor.PHONE:
 			classStr = "PHONE";
 			break;
-		case tizen.bt.deviceMajor.NETWORK:
+		case tizen.bluetooth.deviceMajor.NETWORK:
 			classStr = "NETWORK";
 			break;
-		case tizen.bt.deviceMajor.AUDIO_VIDEO:
+		case tizen.bluetooth.deviceMajor.AUDIO_VIDEO:
 			classStr = "AUDIO/VIDEO";
 			break;
-		case tizen.bt.deviceMajor.PERIPHERAL:
+		case tizen.bluetooth.deviceMajor.PERIPHERAL:
 			classStr = "PERIPHERAL";
 			break;
-		case tizen.bt.deviceMajor.IMAGING:
+		case tizen.bluetooth.deviceMajor.IMAGING:
 			classStr = "IMAGING";
 			break;
-		case tizen.bt.deviceMajor.WEARABLE:
+		case tizen.bluetooth.deviceMajor.WEARABLE:
 			classStr = "WEARABLE";
 			break;
-		case tizen.bt.deviceMajor.TOY:
+		case tizen.bluetooth.deviceMajor.TOY:
 			classStr = "TOY";
 			break;
-		case tizen.bt.deviceMajor.HEALTH:
+		case tizen.bluetooth.deviceMajor.HEALTH:
 			classStr = "HEALTH";
 			break;
-		case tizen.bt.deviceMajor.UNCATEGORIZED:
+		case tizen.bluetooth.deviceMajor.UNCATEGORIZED:
 			classStr = "UNCATEGORIZED";
 			break;
 		default:
@@ -332,7 +332,7 @@ var Bluetooth = function() {
 			if (self.isDeviceSelected(self.selectedDevice())) {
 				return true;
 			}
-			if (!!self.selectedDevice().isBonded && !!self.selectedDevice().address && !!self.selectedDevice().deviceClass && self.selectedDevice().deviceClass.major === tizen.bt.deviceMajor.PHONE) {
+			if (!!self.selectedDevice().isBonded && !!self.selectedDevice().address && !!self.selectedDevice().deviceClass && self.selectedDevice().deviceClass.major === tizen.bluetooth.deviceMajor.PHONE) {
 				return true;
 			}
 		}
@@ -506,9 +506,9 @@ Bluetooth.prototype.getDevice = function(device) {
 Bluetooth.prototype.loadDefaultAdapter = function() {
 	"use strict";
 	var self = this;
-	if (typeof (tizen.bt) !== 'undefined' && typeof (tizen.bt.getDefaultAdapter) !== 'undefined') {
+	if (typeof (tizen.bluetooth) !== 'undefined' && typeof (tizen.bluetooth.getDefaultAdapter) !== 'undefined') {
 		try {
-			var adapter = tizen.bt.getDefaultAdapter();
+			var adapter = tizen.bluetooth.getDefaultAdapter();
 			if (adapter === null) {
 				console.log('Error: Bluetooth adapter not found');
 			} else {
@@ -945,7 +945,7 @@ Bluetooth.prototype.selectRemoteDevice = function(device) {
 	"use strict";
 	var self = this;
 	console.log("selectRemoteDevice called", device);
-	if (!!device && !!device.address && !!device.deviceClass && device.deviceClass.major === tizen.bt.deviceMajor.PHONE && typeof (tizen.phone) !== 'undefined' && typeof (tizen.phone.selectRemoteDevice) !== 'undefined') {
+	if (!!device && !!device.address && !!device.deviceClass && device.deviceClass.major === tizen.bluetooth.deviceMajor.PHONE && typeof (tizen.phone) !== 'undefined' && typeof (tizen.phone.selectRemoteDevice) !== 'undefined') {
 		showLoadingSpinner("Selecting");
 		try {
 			tizen.phone.selectRemoteDevice(device.address);
