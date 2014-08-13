@@ -1,3 +1,6 @@
+* Wed Aug 13 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_3.0.m14.2_ivi/20140723.000002-4-g94fa069
+- Fix font name, temporarily remove subscribe call, and fix app name
+
 * Mon Aug 11 2014 Jimmy Huang <jimmy.huang@intel.com> submit/tizen_3.0.m14.2_ivi/20140723.000002-3-g042024f
 - Fix Modello to use tizen.bluetooth instead of tizen.bt
 

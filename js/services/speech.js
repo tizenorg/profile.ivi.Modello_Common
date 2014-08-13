@@ -210,7 +210,7 @@ var Speech = (function() {
 	Speech.prototype.readCurrentAppName = function() {
 		if (typeof (tizen) !== 'undefined') {
 			var appName = tizen.application.getCurrentApplication().appInfo.name.toString().trim().toLowerCase();
-			if (appName === "hvac") {
+			if (appName === "modello hvac") {
 				appName = "air conditioning";
 			}
 			this.vocalizeString(appName);

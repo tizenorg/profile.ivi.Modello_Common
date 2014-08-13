@@ -474,7 +474,8 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 										self.onDataUpdate(setUpData, self, id);
 								}
 							}
-							tizen.vehicle[subscribeName].subscribe(subscribeCallback, zone);
+							//subscribe isn't supported yet, will re-enable once it is
+							//tizen.vehicle[subscribeName].subscribe(subscribeCallback, zone);
 						} else {
 							console.warn("Tizen API is not available, cannot subscribe to signal", signal);
 						}
