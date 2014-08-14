@@ -465,7 +465,7 @@ Bluetooth.prototype.loadBluetoothConfig = function() {
 	if (!!bluetooth) {
 		self.lastSync(bluetooth.lastSync);
 		if (!!self.adapter() && self.adapter().powered && !!bluetooth.devices) {
-			self.devices(bluetooth.devices);
+			self.clearDevices();
 			self.refreshDevices();
 			self._setRefreshDevicesInterval();
 		}
@@ -486,7 +486,7 @@ Bluetooth.prototype.getDevice = function(device) {
 		self.addUpdateDevice(dev, false);
 		self.sortDevices();
 		self.saveBluetooth();
-		if (self.selectedDevice().address === dev.address) {
+		if (!!self.selectedDevice() && self.selectedDevice().address === dev.address) {
 			self.selectedDevice(dev);
 		}
 	}, function(error) {
