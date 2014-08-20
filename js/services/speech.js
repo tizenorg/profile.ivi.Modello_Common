@@ -52,9 +52,8 @@ var Speech = (function() {
 	Speech.prototype._initVoiceRecognition = function() {
 		var self = this;
 		console.log("Speech init voice recognition called.");
-		if (typeof (tizen) !== 'undefined' && typeof (tizen.speech) !== 'undefined' && typeof (tizen.speech.setCBListener) !== 'undefined') {
+		if (typeof (tizen.speech.setCBListener) !== 'undefined') {
 			try {
-
 				tizen.speech.setCBListener(function(result) {
 						console.log("Speech: onresult received");
 						for ( var i = 0; i < result.length; i++) {
@@ -190,7 +189,7 @@ var Speech = (function() {
 	 */
 	Speech.prototype.vocalizeString = function(string) {
 		console.log("Speech vocalize string called.");
-		if (typeof (tizen) !== 'undefined' && typeof (tizen.speech) !== 'undefined' && typeof (tizen.speech.vocalizeString) !== 'undefined') {
+		if (typeof (tizen.speech.vocalizeString) !== 'undefined') {
 			try {
 				tizen.speech.vocalizeString(string);
 			} catch (err) {
@@ -208,7 +207,7 @@ var Speech = (function() {
 	 * @method readCurrentAppName
 	 */
 	Speech.prototype.readCurrentAppName = function() {
-		if (typeof (tizen) !== 'undefined') {
+		if (typeof (tizen.application.getCurrentApplication) !== 'undefined') {
 			var appName = tizen.application.getCurrentApplication().appInfo.name.toString().trim().toLowerCase();
 			if (appName === "modello hvac") {
 				appName = "air conditioning";

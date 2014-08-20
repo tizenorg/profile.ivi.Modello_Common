@@ -45,7 +45,7 @@
              */
             onBackButtonClick: function () {
                 BottomPanel.thisObj.trigger("clickOnBackButton");
-                if (typeof tizen !== "undefined") {
+                if (typeof (tizen.application.getCurrentApplication) !== "undefined") {
                     tizen.application.getCurrentApplication().exit();
                 }
             }

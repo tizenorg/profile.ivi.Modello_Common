@@ -168,7 +168,7 @@ function launchApplication(id) {
 		 */
 		init: function() {
 			TopBarIcons.initLaunchingAppsByVoiceRecognition();
-			TopBarIcons.runningAppName = typeof(tizen) === 'undefined' ? "" : tizen.application.getCurrentApplication().appInfo.id;
+			TopBarIcons.runningAppName = typeof(tizen.application.getCurrentApplication) === 'undefined' ? "" : tizen.application.getCurrentApplication().appInfo.id;
 
 			this.empty();
 			this.addClass("topBarIcons");
@@ -186,7 +186,7 @@ function launchApplication(id) {
 
 		_getApps: function() {
 			try {
-				if (typeof(tizen) !== 'undefined') {
+				if (typeof(tizen.application.getAppsInfo) !== 'undefined') {
 					tizen.application.getAppsInfo(TopBarIcons.onAppInfoSuccess, function(err) {
 						// Workaround due to https://bugs.tizen.org/jira/browse/TIVI-2018
 						window.setTimeout(function() {
