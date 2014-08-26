@@ -1,3 +1,6 @@
+* Tue Aug 26 2014 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20140821.133859-1-g65c5429
+- Adds sanity check if adapter is invalid
+
 * Wed Aug 20 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20140814.201957-2-g5b6386a
 - Updating tizen api checks to avoid failure if they don't exist
 

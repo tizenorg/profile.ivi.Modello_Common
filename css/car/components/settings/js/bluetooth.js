@@ -481,6 +481,14 @@ Bluetooth.prototype.loadBluetoothConfig = function() {
 Bluetooth.prototype.getDevice = function(device) {
 	"use strict";
 	var self = this;
+	if (!self.adapter()) {
+                console.log ("Device is null");
+                console.log ("removing device:", device.address);
+                self.removeDevice(device.address);
+                self.sortDevices();
+                self.saveBluetooth();
+	}
+
 	self.adapter().getDevice(device.address, function(dev) {
 		// console.log("getDevice ", dev);
 		self.addUpdateDevice(dev, false);
