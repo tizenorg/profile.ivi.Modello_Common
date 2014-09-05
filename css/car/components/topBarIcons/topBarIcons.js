@@ -95,7 +95,7 @@ function onLaunchSuccess() {
 	console.log("App launched succesfully...");
 
 	if (appToHide && appToHide.name !== "Modello Homescreen")
-		appToHide.exit();
+		appToHide.hide();
 }
 
 /**
