@@ -94,7 +94,7 @@ function onLaunchSuccess() {
 	"use strict";
 	console.log("App launched succesfully...");
 
-	if (appToHide && appToHide.name !== "Modello Homescreen")
+	if (appToHide && appToHide.name !== "ModelloHomescreen")
 		appToHide.hide();
 }
 
@@ -218,7 +218,7 @@ function launchApplication(id) {
 
 					for (i = 0; i < list.length; i++) {
 						var app = list[i];
-						var subName = app.name.substr(8);
+						var subName = app.name.substr(7);
 						subName = subName.replace(/\./g, "_").replace(/\ /g, "_");
 						if (app.name.indexOf('Modello') >= 0) {
 							var newApp = {
@@ -231,11 +231,11 @@ function launchApplication(id) {
 								running: TopBarIcons.runningAppName === app.id
 							};
 
-							if (app.name === "Modello Homescreen") {
+							if (app.name === "ModelloHomescreen") {
 								homeScreenApp = newApp;
 							} else {
 								//app filter to block adding some apps into topbar
-								if (app.name === 'Modello AMB Simulator') {
+								if (app.name === 'ModelloAMBSimulator') {
 									extraAppsModel.push(newApp);
 								} else if (modelData.length < 7) {
 									modelData.push(newApp);
