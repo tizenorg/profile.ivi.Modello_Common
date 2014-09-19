@@ -88,6 +88,11 @@ var CarIndicator = function() {
 	console.info("Starting up service CarIndicator");
 };
 
+if (typeof Zone !== 'function')
+{
+	window.Zone = function(){return undefined;};
+}
+
 function parseInteger(value) {
 	"use strict";
 	return parseInt(value, 10);
@@ -459,14 +464,14 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 					var zone = mapping.zone;
 					var subscribeName = signal;
 
-					if (mapping.subscribeName !== undefined) {
+					if (mapping.subscribeName !== "undefined") {
 						subscribeName = mapping.subscribeName;
 					}
 
 					if (mapping.callBackPropertyName.toLowerCase() === prop.toLowerCase() && !mapping.subscribeCount) {
-						mapping.subscribeCount = typeof (mapping.subscribeCount) === 'undefined' ? 0 : mapping.subscribeCount++;
+						mapping.subscribeCount = typeof (mapping.subscribeCount) === "undefined" ? 0 : mapping.subscribeCount++;
 
-						if (typeof (tizen) !== 'undefined' && tizen.vehicle !== undefined && tizen.vehicle[subscribeName] !== undefined) {
+						if (typeof (tizen.vehicle[subscribeName]) !== "undefined") {
 							if (!(subscribeName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
 								if (tizen.vehicle[subscribeName]){
 									var setUpData = tizen.vehicle[subscribeName].get(zone);
@@ -474,13 +479,13 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 										self.onDataUpdate(setUpData, self, id);
 								}
 							}
-							if (typeof (tizen.vehicle[subscribeName].subscribe) !== undefined)
+							if (typeof (tizen.vehicle[subscribeName].subscribe) !== "undefined")
 							{
 								console.log("Modello: Subscribing to AMB signal - " + subscribeName);
 								tizen.vehicle[subscribeName].subscribe(subscribeCallback, zone);
 							}
 						} else {
-							if (tizen.vehicle[subscribeName] === undefined)
+							if (typeof (tizen.vehicle[subscribeName]) === "undefined")
 								console.warn(subscribeName + " is not available to subscribe to");
 							else
 								console.warn("Tizen API is not available, cannot subscribe to signal", signal);
