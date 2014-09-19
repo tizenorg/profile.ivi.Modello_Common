@@ -13,12 +13,12 @@ A proof of concept pure html5 UI
 %prep
 %setup -q -n %{name}-%{version}
 
-%build
-
 %install
-rm -rf %{buildroot}
-%make_install
+mkdir -p %{buildroot}%{_datadir}/Modello/Common/
+cp -r css %{buildroot}%{_datadir}/Modello/Common/
+cp -r js %{buildroot}%{_datadir}/Modello/Common/
 
 %files
 %defattr(-,root,root,-)
-/opt/usr/apps/_common/*
+%{_datadir}/Modello/Common/js
+%{_datadir}/Modello/Common/css

@@ -219,7 +219,7 @@ function launchApplication(id) {
 					for (i = 0; i < list.length; i++) {
 						var app = list[i];
 						var subName = app.name.substr(7);
-						subName = subName.replace(/\./g, "_").replace(/\ /g, "_");
+						subName = subName.replace(/\./g, "").replace(/\ /g, "");
 						if (app.name.indexOf('Modello') >= 0) {
 							var newApp = {
 								id: app.id,
