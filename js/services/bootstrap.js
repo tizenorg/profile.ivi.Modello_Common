@@ -151,7 +151,7 @@ Bootstrap.prototype.initIncomingCall = function(callback) {
 						if (typeof(tizen) !== 'undefined' && tizen.phone) {
 							tizen.phone.addCallChangedListener(function(result) {
 								/* global getAppByID */
-								var appId = getAppByID('intelPoc15.phone');
+								var appId = getAppByID('Modello009.Phone');
 
 								var contact;
 								var activeCall = tizen.phone.activeCall();
@@ -183,7 +183,7 @@ Bootstrap.prototype.initIncomingCall = function(callback) {
 									case "DIALING".toLowerCase():
 										if (!appId.running) {
 											/*global launchApplication*/
-											launchApplication('intelPoc15.phone');
+											launchApplication('Modello009.Phone');
 										}
 										break;
 									case "INCOMING".toLowerCase():

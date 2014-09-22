@@ -1,6 +1,9 @@
 * Thu Sep 18 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20140911.180109-1-g4b1ba8c
 - Updating packaging to remove hard coded paths
 
+* Tue Sep 16 2014 Jimmy Huang <jimmy.huang@intel.com> submit/tizen_ivi/20140911.180109-1-g285968a
+- Fixed the bug where user cannot accept ncoming call
+
 * Wed Sep 10 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20140821.133859-3-gf761b8f
 - Removing space in app name - Fix for TC-1404 Updating tizen.vehicle API to use the new API
 
