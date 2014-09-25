@@ -228,7 +228,6 @@ Bootstrap.prototype.reload = function() {
 	"use strict";
 	document.addEventListener("webkitvisibilitychange", function() {
 		Configuration.reload();
-		Speech.readCurrentAppName();
 	}, false);
 	// workaround for webkitvisibilitychange
 	setInterval(function() {

@@ -1,3 +1,6 @@
+* Thu Sep 25 2014 Brian Jones <brian.j.jones@intel.com> submit/submit/submit/tizen_ivi/20140922.203947/20140922.204133/20140925.202342-1-ga6fd3a9
+- Fixes TTS speaking the app name 2x - bug TC-1604
+
 * Thu Sep 18 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20140911.180109-1-g4b1ba8c
 - Updating packaging to remove hard coded paths
 
