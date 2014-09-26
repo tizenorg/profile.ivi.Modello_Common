@@ -1,3 +1,6 @@
+* Fri Sep 26 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20140926.101640-1-ge9b3c09
+- Fix for TTS bug TC-1604
+
 * Thu Sep 18 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20140911.180109-1-g4b1ba8c
 - Updating packaging to remove hard coded paths
 
