@@ -94,7 +94,7 @@ function onLaunchSuccess() {
 	"use strict";
 	console.log("App launched succesfully...");
 
-	if (appToHide && appToHide.name !== "ModelloHomescreen")
+	if (appToHide)
 		appToHide.hide();
 }
 
