@@ -169,29 +169,29 @@ CarIndicator.prototype._mappingTable = {
 		attributeName : "leftFront",
 		callBackPropertyName : "tirePressureLeftFront",
 		interfaceName : "tire",
-		conversionFunction : parseTirePressure,
-		zone : new Zone(["Front","Left"])
+		conversionFunction : parseTirePressure
+		//zone : new Zone(["Front","Left"])
 	},
 	"TirePressureRightFront" : {
 		attributeName : "rightFront",
 		callBackPropertyName : "tirePressureRightFront",
 		interfaceName : "tire",
-		conversionFunction : parseTirePressure,
-		zone : new Zone(["Front","Right"])
+		conversionFunction : parseTirePressure
+		//zone : new Zone(["Front","Right"])
 	},
 	"TirePressureLeftRear" : {
 		attributeName : "leftRear",
 		callBackPropertyName : "tirePressureLeftRear",
 		interfaceName : "tire",
-		conversionFunction : parseTirePressure,
-		zone : new Zone(["Rear","Left"])
+		conversionFunction : parseTirePressure
+		//zone : new Zone(["Rear","Left"])
 	},
 	"TirePressureRightRear" : {
 		attributeName : "rightRear",
 		callBackPropertyName : "tirePressureRightRear",
 		interfaceName : "tire",
-		conversionFunction : parseTirePressure,
-		zone : new Zone(["Rear","Right"])
+		conversionFunction : parseTirePressure
+		//zone : new Zone(["Rear","Right"])
 	},
 	"ChildLock" : {
 		attributeName : "childLock",
@@ -201,14 +201,14 @@ CarIndicator.prototype._mappingTable = {
 	"FrontDefrost" : {
 		attributeName : "defrostWindow",
 		callBackPropertyName : "frontDefrost",
-		interfaceName : "defrost",
-		zone : new Zone(["Front"])
+		interfaceName : "defrost"
+		//zone : new Zone(["Front"])
 	},
 	"RearDefrost" : {
 		attributeName : "defrostWindow",
 		callBackPropertyName : "rearDefrost",
-		interfaceName : "defrost",
-		zone : new Zone(["Rear"])
+		interfaceName : "defrost"
+		//zone : new Zone(["Rear"])
 	},
 	"FanSpeed" : {
 		attributeName : "fanSpeed",
@@ -220,15 +220,15 @@ CarIndicator.prototype._mappingTable = {
 		attributeName : "targetTemperature",
 		callBackPropertyName : "targetTemperatureRight",
 		interfaceName : "climateControl",
-		conversionFunction : parseInteger,
-		zone : new Zone(["Right"])
+		conversionFunction : parseInteger
+		//zone : new Zone(["Right"])
 	},
 	"TargetTemperatureLeft" : {
 		attributeName : "targetTemperature",
 		callBackPropertyName : "targetTemperatureLeft",
 		interfaceName : "climateControl",
-		conversionFunction : parseInteger,
-		zone : new Zone(["Left"])
+		conversionFunction : parseInteger
+		//zone : new Zone(["Left"])
 	},
 	"Hazard" : {
 		attributeName : "hazard",
@@ -243,14 +243,14 @@ CarIndicator.prototype._mappingTable = {
 	"SeatHeaterRight" : {
 		attributeName : "seatHeater",
 		callBackPropertyName : "seatHeaterRight",
-		interfaceName : "climateControl",
-		zone : new Zone(["Right"])
+		interfaceName : "climateControl"
+		//zone : new Zone(["Right"])
 	},
 	"SeatHeaterLeft" : {
 		attributeName : "seatHeater",
 		callBackPropertyName : "seatHeaterLeft",
-		interfaceName : "climateControl",
-		zone : new Zone(["Left"])
+		interfaceName : "climateControl"
+		//zone : new Zone(["Left"])
 	},
 	"Parking" : {
 		attributeName : "parking",
@@ -473,7 +473,7 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 					var interfaceName = signal;
 
 					if (mapping.interfaceName !== "undefined") {
-						interfaceName = mapping.subscribeName;
+						interfaceName = mapping.interfaceName;
 					}
 
 					if (mapping.callBackPropertyName.toLowerCase() === prop.toLowerCase() && !mapping.subscribeCount) {

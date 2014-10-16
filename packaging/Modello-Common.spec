@@ -1,6 +1,6 @@
 Name:       Modello-Common
 Summary:    Pure html5 UI
-Version:    0.0.2
+Version:    0.0.3
 Release:    0
 Group:      Automotive/Modello
 License:    Apache-2.0

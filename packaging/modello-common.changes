@@ -1,3 +1,6 @@
+* Thu Oct 16 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141016.164956-1-g9a44462
+- Removing zones for now, plus a AMB subscribe fix
+
 * Wed Oct 15 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141015.162448-1-gfba0135
 - Remove totally TC-1388 Work around.
 - Updating AMB calls
