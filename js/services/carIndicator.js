@@ -98,6 +98,11 @@ function parseInteger(value) {
 	return parseInt(value, 10);
 }
 
+function parseFloat(value) {
+        "use strict";
+        return parseFloat(value).toFixed(2);
+}
+
 function parseTirePressure(value) {
 	"use strict";
 	var floatValue = parseFloat(value).toFixed(2);
@@ -194,17 +199,17 @@ CarIndicator.prototype._mappingTable = {
 		zone : new Zone(["Rear","Right"])
 	},
 	"ChildLock" : {
-		propertyName : "ChildLockStatus",
+		propertyName : "Lock",
 		callBackPropertyName : "childLock",
 		subscribeName : "childSafetyLock"
 	},
 	"FrontDefrost" : {
-		propertyName : "Defrost",
+		propertyName : "DefrostWindow",
 		callBackPropertyName : "frontDefrost",
 		subscribeName : "defrost"
 	},
 	"RearDefrost" : {
-		propertyName : "Defrost",
+		propertyName : "DefrostWindow",
 		callBackPropertyName : "rearDefrost",
 		subscribeName : "defrost"
 	},
@@ -272,7 +277,7 @@ CarIndicator.prototype._mappingTable = {
 		conversionFunction : parseInteger
 	},
 	"BatteryStatus" : {
-		propertyName : "BatteryStatus",
+		propertyName : "ChargeLevel",
 		callBackPropertyName : "batteryStatus",
 		subscribeName : "batteryStatus",
 		conversionFunction : parseInteger
@@ -283,13 +288,13 @@ CarIndicator.prototype._mappingTable = {
 		conversionFunction : parseInteger
 	},
 	"Exterior" : {
-		propertyName : "Exterior",
+		propertyName : "ExteriorTemperature",
 		callBackPropertyName : "outsideTemp",
 		subscribeName : "temperature",
 		conversionFunction : parseInteger
 	},
 	"Interior" : {
-		propertyName : "Interior",
+		propertyName : "InteriorTemperature",
 		callBackPropertyName : "insideTemp",
 		subscribeName : "temperature",
 		conversionFunction : parseInteger
@@ -327,25 +332,31 @@ CarIndicator.prototype._mappingTable = {
 		conversionFunction : parseInteger
 	},
 	"TransmissionShiftPosition" : {
-		propertyName : "ShiftPosition",
+		propertyName : "Mode",
 		callBackPropertyName : "gear",
 		conversionFunction : function(value) {
 			"use strict";
 			switch (value) {
 			case 0:
-				value = "N";
+				value = "P";
 				break;
-			case 64:
-				value = "C";
-				break;
-			case 96:
-				value = "D";
-				break;
-			case 128:
+			case 1:
 				value = "R";
 				break;
-			case 255:
-				value = "P";
+			case 2:
+				value = "N";
+				break;
+			case 3:
+				value = "L";
+				break;
+			case 4:
+				value = "D";
+				break;
+			case 5:
+				value = "OD";
+				break;
+			default:
+				value = "D";
 				break;
 			}
 			return value;
@@ -362,7 +373,7 @@ CarIndicator.prototype._mappingTable = {
 		callBackPropertyName : "exteriorBrightness"
 	},
 	"NightMode" : {
-		propertyName : "NightMode",
+		propertyName : "Mode",
 		callBackPropertyName : "nightMode",
 		subscribeName : "nightMode"
 	},
