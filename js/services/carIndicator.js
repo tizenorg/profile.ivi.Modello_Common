@@ -142,9 +142,9 @@ CarIndicator.prototype._mappingTable = {
 	*/
 	/* this is for steeringWheel game controler */
 	"SteeringWheelAngle" : {
-		propertyName : "SteeringWheelAngle",
+		attributeName : "steeringWheelAngle",
 		callBackPropertyName : "SteeringWheelAngle",
-		subscribeName : "steeringWheel",
+		interfaceName : "steeringWheel",
 		conversionFunction : function(value) {
 			"use strict";
 			value = parseInt(value, 10);
@@ -160,276 +160,282 @@ CarIndicator.prototype._mappingTable = {
 		}
 	},
 	"WheelBrake" : {
-		propertyName : "Engaged",
+		attributeName : "engaged",
 		callBackPropertyName : "WheelBrake",
-		subscribeName : "brakeOperation"
+		interfaceName : "brakeOperation"
 	},
 	/* end steeringWheel game controler*/
 	"TirePressureLeftFront" : {
-		propertyName : "leftFront",
+		attributeName : "leftFront",
 		callBackPropertyName : "tirePressureLeftFront",
-		subscribeName : "tire",
+		interfaceName : "tire",
 		conversionFunction : parseTirePressure,
 		zone : new Zone(["Front","Left"])
 	},
 	"TirePressureRightFront" : {
-		propertyName : "rightFront",
+		attributeName : "rightFront",
 		callBackPropertyName : "tirePressureRightFront",
-		subscribeName : "tire",
+		interfaceName : "tire",
 		conversionFunction : parseTirePressure,
 		zone : new Zone(["Front","Right"])
 	},
 	"TirePressureLeftRear" : {
-		propertyName : "leftRear",
+		attributeName : "leftRear",
 		callBackPropertyName : "tirePressureLeftRear",
-		subscribeName : "tire",
+		interfaceName : "tire",
 		conversionFunction : parseTirePressure,
 		zone : new Zone(["Rear","Left"])
 	},
 	"TirePressureRightRear" : {
-		propertyName : "rightRear",
+		attributeName : "rightRear",
 		callBackPropertyName : "tirePressureRightRear",
-		subscribeName : "tire",
+		interfaceName : "tire",
 		conversionFunction : parseTirePressure,
 		zone : new Zone(["Rear","Right"])
 	},
 	"ChildLock" : {
-		propertyName : "ChildLockStatus",
+		attributeName : "childLock",
 		callBackPropertyName : "childLock",
-		subscribeName : "childSafetyLock"
+		interfaceName : "childSafetyLock"
 	},
 	"FrontDefrost" : {
-		propertyName : "Defrost",
+		attributeName : "defrostWindow",
 		callBackPropertyName : "frontDefrost",
-		subscribeName : "defrost"
+		interfaceName : "defrost"
 	},
 	"RearDefrost" : {
-		propertyName : "Defrost",
+		attributeName : "defrostWindow",
 		callBackPropertyName : "rearDefrost",
-		subscribeName : "defrost"
+		interfaceName : "defrost"
 	},
 	"FanSpeed" : {
-		propertyName : "FanSpeed",
+		attributeName : "fanSpeed",
 		callBackPropertyName : "fanSpeed",
-		subscribeName : "climateControl",
+		interfaceName : "climateControl",
 		conversionFunction : parseInteger
 	},
 	"TargetTemperatureRight" : {
-		propertyName : "TargetTemperature",
+		attributeName : "targetTemperature",
 		callBackPropertyName : "targetTemperatureRight",
-		subscribeName : "climateControl",
+		interfaceName : "climateControl",
 		conversionFunction : parseInteger,
 		zone : new Zone(["Right"])
 	},
 	"TargetTemperatureLeft" : {
-		propertyName : "TargetTemperature",
+		attributeName : "targetTemperature",
 		callBackPropertyName : "targetTemperatureLeft",
-		subscribeName : "climateControl",
+		interfaceName : "climateControl",
 		conversionFunction : parseInteger,
 		zone : new Zone(["Left"])
 	},
 	"Hazard" : {
-		propertyName : "Hazard",
+		attributeName : "hazard",
 		callBackPropertyName : "hazard",
-		subscribeName : "lightStatus"
+		interfaceName : "lightStatus"
 	},
 	"Head" : {
-		propertyName : "Head",
+		attributeName : "head",
 		callBackPropertyName : "frontLights",
-		subscribeName : "lightStatus"
+		interfaceName : "lightStatus"
 	},
 	"SeatHeaterRight" : {
-		propertyName : "SeatHeater",
+		attributeName : "seatHeater",
 		callBackPropertyName : "seatHeaterRight",
-		subscribeName : "climateControl",
+		interfaceName : "climateControl",
 		zone : new Zone(["Right"])
 	},
 	"SeatHeaterLeft" : {
-		propertyName : "SeatHeater",
+		attributeName : "seatHeater",
 		callBackPropertyName : "seatHeaterLeft",
-		subscribeName : "climateControl",
+		interfaceName : "climateControl",
 		zone : new Zone(["Left"])
 	},
 	"Parking" : {
-		propertyName : "Parking",
+		attributeName : "parking",
 		callBackPropertyName : "rearLights",
-		subscribeName : "lightStatus",
+		interfaceName : "lightStatus",
 	},
 	"AirConditioning" : {
-		propertyName : "AirConditioning",
+		attributeName : "airConditioning",
 		callBackPropertyName : "fan",
-		subscribeName : "climateControl"
+		interfaceName : "climateControl"
 	},
 	"AirRecirculation" : {
-		propertyName : "AirRecirculation",
+		attributeName : "airRecirculation",
 		callBackPropertyName : "airRecirculation",
-		subscribeName : "climateControl"
+		interfaceName : "climateControl"
 	},
 	"AirflowDirection" : {
-		propertyName : "AirflowDirection",
+		attributeName : "airflowDirection",
 		callBackPropertyName : "airflowDirection",
-		subscribeName : "climateControl",
+		interfaceName : "climateControl",
 		conversionFunction : parseInteger
 	},
 	"BatteryStatus" : {
-		propertyName : "BatteryStatus",
+		attributeName : "chargeLevel",
 		callBackPropertyName : "batteryStatus",
-		subscribeName : "batteryStatus",
+		interfaceName : "batteryStatus",
 		conversionFunction : parseInteger
 	},
 	"FullBatteryRange" : {
-		propertyName : "FullBatteryRange",
+		attributeName : "fullBatteryRange",
 		callBackPropertyName : "fullBatteryRange",
 		conversionFunction : parseInteger
 	},
 	"Exterior" : {
-		propertyName : "Exterior",
+		attributeName : "exteriorTemperature",
 		callBackPropertyName : "outsideTemp",
-		subscribeName : "temperature",
+		interfaceName : "temperature",
 		conversionFunction : parseInteger
 	},
 	"Interior" : {
-		propertyName : "Interior",
+		attributeName : "interiorTemperature",
 		callBackPropertyName : "insideTemp",
-		subscribeName : "temperature",
+		interfaceName : "temperature",
 		conversionFunction : parseInteger
 	},
 	"WheelAngle" : {
-		propertyName : "FrontWheelRadius",
+		attributeName : "frontWheelRadius",
 		callBackPropertyName : "wheelAngle",
-		//subscribeName : "wheelConfiguration",
+		//interfaceName : "wheelConfiguration",
 		conversionFunction : parseInteger
 	},
 	"Weather" : {
-		propertyName : "Weather",
+		attributeName : "weather",
 		callBackPropertyName : "weather",
 		conversionFunction : parseInteger
 	},
 	"AvgKW" : {
-		propertyName : "AvgKW",
+		attributeName : "avgKW",
 		callBackPropertyName : "avgKW",
-		//subscribeName : "AvgKW",
+		//interfaceName : "AvgKW",
 		conversionFunction : function(newValue) {
 			"use strict";
 			return parseFloat(newValue).toFixed(2);
 		}
 	},
 	"VehicleSpeed" : {
-		propertyName : "VehicleSpeed",
+		attributeName : "vehicleSpeed",
 		callBackPropertyName : "speed",
-		subscribeName : "vehicleSpeed",
+		interfaceName : "vehicleSpeed",
 		conversionFunction : parseInteger
 	},
 	"Odometer" : {
-		propertyName : "Odometer",
+		attributeName : "odometer",
 		callBackPropertyName : "odoMeter",
-		subscribeName : "odometer",
+		interfaceName : "odometer",
 		conversionFunction : parseInteger
 	},
 	"TransmissionShiftPosition" : {
-		propertyName : "ShiftPosition",
+		attributeName : "mode",
 		callBackPropertyName : "gear",
 		conversionFunction : function(value) {
 			"use strict";
 			switch (value) {
 			case 0:
-				value = "N";
+				value = "P";
 				break;
-			case 64:
-				value = "C";
-				break;
-			case 96:
-				value = "D";
-				break;
-			case 128:
+			case 1:
 				value = "R";
 				break;
-			case 255:
-				value = "P";
+			case 2:
+				value = "N";
+				break;
+			case 3:
+				value = "L";
+				break;
+			case 4:
+				value = "D";
+				break;
+			case 5:
+				value = "OD";
+				break;
+			default:
+				value = "D";
 				break;
 			}
 			return value;
 		},
-		subscribeName : "transmission"
+		interfaceName : "transmission"
 	},
 	"Randomize" : {
-		propertyName : "Randomize",
+		attributeName : "randomize",
 		callBackPropertyName : "randomize",
-		subscribeName : "Randomize"
+		interfaceName : "Randomize"
 	},
 	"ExteriorBrightness" : {
-		propertyName : "ExteriorBrightness",
+		attributeName : "exteriorBrightness",
 		callBackPropertyName : "exteriorBrightness"
 	},
 	"NightMode" : {
-		propertyName : "NightMode",
+		attributeName : "mode",
 		callBackPropertyName : "nightMode",
-		subscribeName : "nightMode"
+		interfaceName : "nightMode"
 	},
 	"DirectionIndicationINST" : {
-		propertyName : "DirectionIndicationINST",
+		attributeName : "DirectionIndicationINST",
 		callBackPropertyName : "DirectionIndicationINST",
-		//subscribeName : "DirectionIndicationINST"
+		//interfaceName : "DirectionIndicationINST"
 	},
 	"DirectionIndicationMS" : {
-		propertyName : "DirectionIndicationMS",
+		attributeName : "DirectionIndicationMS",
 		callBackPropertyName : "DirectionIndicationMS",
-		//subscribeName : "DirectionIndicationMS"
+		//interfaceName : "DirectionIndicationMS"
 	},
 	"ACCommand" : {
-		propertyName : "ACCommand",
+		attributeName : "ACCommand",
 		callBackPropertyName : "ACCommand",
-		//subscribeName : "ACCommand"
+		//interfaceName : "ACCommand"
 	},
 	"RecircReq" : {
-		propertyName : "RecircReq",
+		attributeName : "RecircReq",
 		callBackPropertyName : "RecircReq",
-		//subscribeName : "RecircReq"
+		//interfaceName : "RecircReq"
 	},
 	"FrontTSetRightCmd" : {
-		propertyName : "FrontTSetRightCmd",
+		attributeName : "FrontTSetRightCmd",
 		callBackPropertyName : "FrontTSetRightCmd",
-		//subscribeName : "FrontTSetRightCmd"
+		//interfaceName : "FrontTSetRightCmd"
 	},
 	"FrontTSetLeftCmd" : {
-		propertyName : "FrontTSetLeftCmd",
+		attributeName : "FrontTSetLeftCmd",
 		callBackPropertyName : "FrontTSetLeftCmd",
-		//subscribeName : "FrontTSetLeftCmd"
+		//interfaceName : "FrontTSetLeftCmd"
 	},
 	"FrontBlwrSpeedCmd" : {
-		propertyName : "FrontBlwrSpeedCmd",
+		attributeName : "FrontBlwrSpeedCmd",
 		callBackPropertyName : "FrontBlwrSpeedCmd",
-		//subscribeName : "FrontBlwrSpeedCmd"
+		//interfaceName : "FrontBlwrSpeedCmd"
 	},
 	"HeatedSeatFRModeRequest" : {
-		propertyName : "HeatedSeatFRModeRequest",
+		attributeName : "HeatedSeatFRModeRequest",
 		callBackPropertyName : "HeatedSeatFRModeRequest",
-		//subscribeName : "HeatedSeatFRModeRequest"
+		//interfaceName : "HeatedSeatFRModeRequest"
 	},
 	"HeatedSeatFRRequest" : {
-		propertyName : "HeatedSeatFRRequest",
+		attributeName : "HeatedSeatFRRequest",
 		callBackPropertyName : "HeatedSeatFRRequest",
-		//subscribeName : "HeatedSeatFRRequest"
+		//interfaceName : "HeatedSeatFRRequest"
 	},
 	"HeatedSeatFLModeRequest" : {
-		propertyName : "HeatedSeatFLModeRequest",
+		attributeName : "HeatedSeatFLModeRequest",
 		callBackPropertyName : "HeatedSeatFLModeRequest",
-		//subscribeName : "HeatedSeatFLModeRequest"
+		//interfaceName : "HeatedSeatFLModeRequest"
 	},
 	"HeatedSeatFLRequest" : {
-		propertyName : "HeatedSeatFLRequest",
+		attributeName : "HeatedSeatFLRequest",
 		callBackPropertyName : "HeatedSeatFLRequest",
-		//subscribeName : "HeatedSeatFLRequest"
+		//interfaceName : "HeatedSeatFLRequest"
 	},
 	"FLHSDistrCmd" : {
-		propertyName : "FLHSDistrCmd",
+		attributeName : "FLHSDistrCmd",
 		callBackPropertyName : "FLHSDistrCmd",
-		//subscribeName : "FLHSDistrCmd"
+		//interfaceName : "FLHSDistrCmd"
 	},
 	"FRHSDistrCmd" : {
-		propertyName : "FRHSDistrCmd",
+		attributeName : "FRHSDistrCmd",
 		callBackPropertyName : "FRHSDistrCmd",
-		//subscribeName : "FRHSDistrCmd"
+		//interfaceName : "FRHSDistrCmd"
 	}
 };
 
@@ -462,31 +468,31 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 				if (this._mappingTable.hasOwnProperty(signal)) {
 					var mapping = this._mappingTable[signal];
 					var zone = mapping.zone;
-					var subscribeName = signal;
+					var interfaceName = signal;
 
-					if (mapping.subscribeName !== "undefined") {
-						subscribeName = mapping.subscribeName;
+					if (mapping.interfaceName !== "undefined") {
+						interfaceName = mapping.subscribeName;
 					}
 
 					if (mapping.callBackPropertyName.toLowerCase() === prop.toLowerCase() && !mapping.subscribeCount) {
 						mapping.subscribeCount = typeof (mapping.subscribeCount) === "undefined" ? 0 : mapping.subscribeCount++;
 
-						if (typeof (tizen.vehicle[subscribeName]) !== "undefined") {
-							if (!(subscribeName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
-								if (tizen.vehicle[subscribeName]){
-									var setUpData = tizen.vehicle[subscribeName].get(zone);
+						if (typeof (tizen.vehicle[interfaceName]) !== "undefined") {
+							if (!(interfaceName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
+								if (tizen.vehicle[interfaceName]){
+									var setUpData = tizen.vehicle[interfaceName].get(zone);
 									if (setUpData !== undefined)
 										self.onDataUpdate(setUpData, self, id);
 								}
 							}
-							if (typeof (tizen.vehicle[subscribeName].subscribe) !== "undefined")
+							if (typeof (tizen.vehicle[interfaceName].subscribe) !== "undefined")
 							{
-								console.log("Modello: Subscribing to AMB signal - " + subscribeName);
-								tizen.vehicle[subscribeName].subscribe(subscribeCallback, zone);
+								console.log("Modello: Subscribing to AMB signal - " + interfaceName);
+								tizen.vehicle[interfaceName].subscribe(subscribeCallback, zone);
 							}
 						} else {
-							if (typeof (tizen.vehicle[subscribeName]) === "undefined")
-								console.warn(subscribeName + " is not available to subscribe to");
+							if (typeof (tizen.vehicle[interfaceName]) === "undefined")
+								console.warn(interfaceName + " is not available to subscribe to");
 							else
 								console.warn("Tizen API is not available, cannot subscribe to signal", signal);
 						}
@@ -520,7 +526,7 @@ CarIndicator.prototype.onDataUpdate = function(data, self, lisenersID) {
 				if (property !== "time" && property !== "zone" && property.search("Sequence") === -1) {
 					for ( var element in self._mappingTable) {
 						if (self._mappingTable.hasOwnProperty(element)) {
-							if (self._mappingTable[element].propertyName.toLowerCase() === property.toLowerCase()) {
+							if (self._mappingTable[element].attributeName.toLowerCase() === property.toLowerCase()) {
 								/* jshint bitwise: false */
 								if (!(zone ^ self._mappingTable[element].zone)) {
 									/* jshint bitwise: true */
@@ -676,7 +682,7 @@ CarIndicator.prototype.setStatus = function(indicator, newValue, callback, zone)
 			mappingProperty = undefined;
 			if (this._mappingTable[element].callBackPropertyName.toLowerCase() === indicator.toLowerCase()) {
 				mappingElement = this._mappingTable[element];
-				mappingProperty = this._mappingTable[element].propertyName;
+				mappingProperty = this._mappingTable[element].attributeName;
 				break;
 			}
 		}
@@ -684,7 +690,7 @@ CarIndicator.prototype.setStatus = function(indicator, newValue, callback, zone)
 
 	// this.status[indicator] = status === "true";
 	if (mappingProperty !== undefined) {
-		var objectName = mappingElement.subscribeName;
+		var objectName = mappingElement.interfaceName;
 		var propertyZone = parseInt(mappingElement.zone, 2);
 		var propertyValue = {};
 		propertyValue[mappingProperty] = newValue;

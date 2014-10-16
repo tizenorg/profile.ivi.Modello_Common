@@ -1,3 +1,7 @@
+* Wed Oct 15 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141015.162448-1-gfba0135
+- Remove totally TC-1388 Work around.
+- Updating AMB calls
+
 * Fri Sep 26 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20140926.101640-1-ge9b3c09
 - Fix for TTS bug TC-1604
 
