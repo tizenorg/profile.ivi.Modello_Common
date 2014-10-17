@@ -543,7 +543,7 @@ Bluetooth.prototype.registerDefaultAdapterChangeListener = function() {
 			self.adapter().setChangeListener({
 				onstatechanged : function(powered) {
 					console.log("Power state is changed into: " + powered);
-					self.loadDefaultAdapter();
+					//self.loadDefaultAdapter();
 					if (!powered) {
 						self.clearDevices();
 						self.scanning(false);
@@ -1022,6 +1022,8 @@ Bluetooth.prototype.registerSelectedRemoteDeviceChangeListener = function() {
  * @method refreshDevices
  */
 Bluetooth.prototype.refreshDevices = function() {
+	console.log("stubbed refreshDevices called");
+/*
 	"use strict";
 	var self = this;
 	console.log("refreshDevices called");
@@ -1061,6 +1063,7 @@ Bluetooth.prototype.refreshDevices = function() {
 	} else {
 		updateDeviceInfo();
 	}
+*/
 };
 
 Bluetooth.prototype._restartRefreshDevicesInterval = function() {
