@@ -1,3 +1,6 @@
+* Mon Oct 20 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141016.183406-1-g64442e3
+- Fix for TC-1777. Makes sure to check the interface as well as attribute name
+
 * Thu Oct 16 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141016.164956-1-g9a44462
 - Removing zones for now, plus a AMB subscribe fix
 
