@@ -525,10 +525,12 @@ CarIndicator.prototype.onDataUpdate = function(data, self, lisenersID) {
 		for ( var property in data) {
 			if (data.hasOwnProperty(property)) {
 				mapping = undefined;
-				if (property !== "time" && property !== "zone" && property.search("Sequence") === -1) {
+				if (property !== "time" && property !== "zone" && property !== "interfaceName" && property.search("Sequence") === -1) {
 					for ( var element in self._mappingTable) {
-						if (self._mappingTable.hasOwnProperty(element)) {
-							if (self._mappingTable[element].attributeName.toLowerCase() === property.toLowerCase()) {
+						if (self._mappingTable.hasOwnProperty(element) && self._mappingTable[element].interfaceName !== undefined) {
+							if (self._mappingTable[element].interfaceName.toLowerCase() === data.interfaceName.toLowerCase() &&
+								self._mappingTable[element].attributeName.toLowerCase() === property.toLowerCase()) {
+								console.log("BJONES MATCH! for " + property + " on interface " + data.interfaceName);
 								/* jshint bitwise: false */
 								if (!(zone ^ self._mappingTable[element].zone)) {
 									/* jshint bitwise: true */
