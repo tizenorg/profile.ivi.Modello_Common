@@ -1,3 +1,6 @@
+* Mon Oct 20 2014 Jimmy Huang <jimmy.huang@intel.com> submit/tizen_ivi/20141020.235134-1-gdc1fde1
+- Enabled click events for alphabet filtering
+
 * Mon Oct 20 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141016.183406-1-g64442e3
 - Fix for TC-1777. Makes sure to check the interface as well as attribute name
 

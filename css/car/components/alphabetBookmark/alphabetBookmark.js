@@ -38,11 +38,10 @@ var AlphabetBookmark = {
          */
         touch: function (index) {
             "use strict";
-            return;
-            // $(".alphabetBookmarkItem").removeClass("fontColorSelected");
-            // var tabId = "#item_" + index;
-            // $(tabId).addClass("fontColorSelected");
-            // $("#alphabetBookmarkList").trigger("letterClick", this.abModel[index].text);
+            $(".alphabetBookmarkItem").removeClass("fontColorSelected");
+            var tabId = "#item_" + index;
+            $(tabId).addClass("fontColorSelected");
+            $("#alphabetBookmarkList").trigger("letterClick", this.abModel[index].text);
         },
         /**
          * Fills the {{#crossLink "AlphabetBookmark/abModel:property"}}{{/crossLink}} from {{#crossLink "AlphabetBookmark/abcd:property"}}{{/crossLink}} and shows the rendered default template on the screen.
