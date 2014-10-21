@@ -156,6 +156,8 @@ var Bluetooth = function() {
 				showLoadingSpinner("Unpairing");
 				self.adapter().destroyBonding(device.address, function() {
 					console.log('bluetooth unpaired from ' + device.address);
+					self.removeDevice(device.address);
+					self.scan(true);
 					self._restartRefreshDevicesInterval();
 					hideLoadingSpinner("Unpairing");
 				}, function(e) {
