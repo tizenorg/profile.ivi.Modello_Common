@@ -1,3 +1,6 @@
+* Thu Oct 23 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141022.072325-1-g33d153e
+- Updating attribute name fanSpeed to fanSpeedLevel.  Fix bug TC-1898
+
 * Mon Oct 20 2014 Jimmy Huang <jimmy.huang@intel.com> submit/tizen_ivi/20141020.235134-1-gdc1fde1
 - Enabled click events for alphabet filtering
 
