@@ -211,7 +211,7 @@ CarIndicator.prototype._mappingTable = {
 		//zone : new Zone(["Rear"])
 	},
 	"FanSpeed" : {
-		attributeName : "fanSpeed",
+		attributeName : "fanSpeedLevel",
 		callBackPropertyName : "fanSpeed",
 		interfaceName : "climateControl",
 		conversionFunction : parseInteger
