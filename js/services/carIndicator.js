@@ -166,35 +166,35 @@ CarIndicator.prototype._mappingTable = {
 	},
 	/* end steeringWheel game controler*/
 	"TirePressureLeftFront" : {
-		attributeName : "leftFront",
+		attributeName : "pressure",
 		callBackPropertyName : "tirePressureLeftFront",
 		interfaceName : "tire",
 		conversionFunction : parseTirePressure
 		//zone : new Zone(["Front","Left"])
 	},
 	"TirePressureRightFront" : {
-		attributeName : "rightFront",
+		attributeName : "pressure",
 		callBackPropertyName : "tirePressureRightFront",
 		interfaceName : "tire",
 		conversionFunction : parseTirePressure
 		//zone : new Zone(["Front","Right"])
 	},
 	"TirePressureLeftRear" : {
-		attributeName : "leftRear",
+		attributeName : "pressure",
 		callBackPropertyName : "tirePressureLeftRear",
 		interfaceName : "tire",
 		conversionFunction : parseTirePressure
 		//zone : new Zone(["Rear","Left"])
 	},
 	"TirePressureRightRear" : {
-		attributeName : "rightRear",
+		attributeName : "pressure",
 		callBackPropertyName : "tirePressureRightRear",
 		interfaceName : "tire",
 		conversionFunction : parseTirePressure
 		//zone : new Zone(["Rear","Right"])
 	},
 	"ChildLock" : {
-		attributeName : "childLock",
+		attributeName : "lock",
 		callBackPropertyName : "childLock",
 		interfaceName : "childSafetyLock"
 	},
@@ -334,22 +334,22 @@ CarIndicator.prototype._mappingTable = {
 		conversionFunction : function(value) {
 			"use strict";
 			switch (value) {
-			case 0:
+			case "park":
 				value = "P";
 				break;
-			case 1:
+			case "reverse":
 				value = "R";
 				break;
-			case 2:
+			case "neutral":
 				value = "N";
 				break;
-			case 3:
+			case "low":
 				value = "L";
 				break;
-			case 4:
+			case "drive":
 				value = "D";
 				break;
-			case 5:
+			case "overdrive":
 				value = "OD";
 				break;
 			default:

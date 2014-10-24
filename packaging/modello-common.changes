@@ -1,3 +1,6 @@
+* Fri Oct 24 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141024.004833-1-g3fbf137
+- Updating Tire and Transmission listeners for AMB
+
 * Thu Oct 23 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141022.072325-1-g33d153e
 - Updating attribute name fanSpeed to fanSpeedLevel.  Fix bug TC-1898
 
