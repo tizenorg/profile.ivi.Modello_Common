@@ -199,9 +199,9 @@
 						}
 
 						var bind = '.noUiSlider',
-						onEvent = (EVENT === 1 ? 'mousedown' : EVENT === 2 ? 'MSPointerDown' : EVENT === 3 ? 'mousedown' : 'touchstart') + bind + 'X',
-						moveEvent = (EVENT === 1 ? 'mousemove' : EVENT === 2 ? 'MSPointerMove' : EVENT === 3 ? 'mousemove' : 'touchmove') + bind,
-						offEvent = (EVENT === 1 ? 'mouseup' : EVENT === 2 ? 'MSPointerUp' : EVENT === 3 ? 'mouseup' :'touchend') + bind
+						onEvent = (EVENT === 1 ? 'mousedown' : EVENT === 2 ? 'MSPointerDown' : EVENT === 3 ? 'touchstart' : 'mousedown') + bind + 'X',
+						moveEvent = (EVENT === 1 ? 'mousemove' : EVENT === 2 ? 'MSPointerMove' : EVENT === 3 ? 'touchmove' : 'mousemove') + bind,
+						offEvent = (EVENT === 1 ? 'mouseup' : EVENT === 2 ? 'MSPointerUp' : EVENT === 3 ? 'touchend' : 'mouseup') + bind
 
 						handles[i].find('div').on(onEvent, function (e) {
 
