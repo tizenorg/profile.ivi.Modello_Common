@@ -3,7 +3,7 @@
  */
 
 /**
- * Class provides AMB related functionality utilizing `tizen.vehicle` API for signals used in HTML applications. This component is usually initialized by {{#crossLink "Bootstrap"}}{{/crossLink}} class
+ * Class provides AMB related functionality utilizing `navigator.vehicle` API for signals used in HTML applications. This component is usually initialized by {{#crossLink "Bootstrap"}}{{/crossLink}} class
  * and can be later accessed using {{#crossLink "Bootstrap/carIndicator:property"}}{{/crossLink}} property. Signals recognized by this class needs to be registered in property
  * {{#crossLink "CarIndicator/_mappingTable:property"}}{{/crossLink}}.
  *
@@ -479,21 +479,21 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 					if (mapping.callBackPropertyName.toLowerCase() === prop.toLowerCase() && !mapping.subscribeCount) {
 						mapping.subscribeCount = typeof (mapping.subscribeCount) === "undefined" ? 0 : mapping.subscribeCount++;
 
-						if (typeof (tizen.vehicle[interfaceName]) !== "undefined") {
+						if (typeof (navigator.vehicle[interfaceName]) !== "undefined") {
 							if (!(interfaceName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
-								if (tizen.vehicle[interfaceName]){
-									var setUpData = tizen.vehicle[interfaceName].get(zone);
+								if (navigator.vehicle[interfaceName]){
+									var setUpData = navigator.vehicle[interfaceName].get(zone);
 									if (setUpData !== undefined)
 										self.onDataUpdate(setUpData, self, id);
 								}
 							}
-							if (typeof (tizen.vehicle[interfaceName].subscribe) !== "undefined")
+							if (typeof (navigator.vehicle[interfaceName].subscribe) !== "undefined")
 							{
 								console.log("Modello: Subscribing to AMB signal - " + interfaceName);
-								tizen.vehicle[interfaceName].subscribe(subscribeCallback, zone);
+								navigator.vehicle[interfaceName].subscribe(subscribeCallback, zone);
 							}
 						} else {
-							if (typeof (tizen.vehicle[interfaceName]) === "undefined")
+							if (typeof (navigator.vehicle[interfaceName]) === "undefined")
 								console.warn(interfaceName + " is not available to subscribe to");
 							else
 								console.warn("Tizen API is not available, cannot subscribe to signal", signal);
@@ -507,7 +507,7 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 	return id;
 };
 /**
- * This method is call as callback if data oon tizen.vehicle was change onDataUpdate
+ * This method is call as callback if data oon navigator.vehicle was change onDataUpdate
  * @method onDataUpdate
  * @param data {object} object whit new data.
  * @param self {object} this carIndicator Object.
@@ -606,7 +606,7 @@ CarIndicator.prototype.removeListener = function(aId) {
 					var mapping = this._mappingTable[signal];
 
 					if (mapping.subscribeCount === 0) { // Last signal, unscubscribe
-						tizen.vehicle.unsubscribe(signal);
+						navigator.vehicle.unsubscribe(signal);
 						mapping.subscribeCount = undefined;
 					} else if (typeof (mapping.subscribeCount) !== 'undefined') {
 						mapping.subscribeCount--;
@@ -670,7 +670,7 @@ CarIndicator.prototype.getStatus = function(callback) {
 };
 
 /**
- * this method set status for property in tizen.vehicle and status object
+ * this method set status for property in navigator.vehicle and status object
  * @method setStatus
  * @param indicator {string} indicator name.
  * @param status {??} ??.
@@ -699,7 +699,7 @@ CarIndicator.prototype.setStatus = function(indicator, newValue, callback, zone)
 		propertyValue[mappingProperty] = newValue;
 		propertyValue.zone = propertyZone;
 
-		tizen.vehicle.set(objectName, propertyValue, function(msg) {
+		navigator.vehicle.set(objectName, propertyValue, function(msg) {
 			console.error("Set error: " + msg);
 		});
 	}

@@ -1,3 +1,6 @@
+* Mon Dec 01 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141124.011535-1-gcbe85dc
+- Changed to use the navigator.vehicle namespace - TC-2055
+
 * Fri Nov 21 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141110.082141-1-gf84531a
 - remove device from list and show scan button when unpairing
 - Fixing slider code to work with touch.  This will fix the mediaplayer volume control
