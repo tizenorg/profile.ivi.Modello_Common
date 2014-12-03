@@ -478,25 +478,28 @@ CarIndicator.prototype.addListener = function(aCallbackObject) {
 
 					if (mapping.callBackPropertyName.toLowerCase() === prop.toLowerCase() && !mapping.subscribeCount) {
 						mapping.subscribeCount = typeof (mapping.subscribeCount) === "undefined" ? 0 : mapping.subscribeCount++;
-
-						if (typeof (navigator.vehicle[interfaceName]) !== "undefined") {
-							if (!(interfaceName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
-								if (navigator.vehicle[interfaceName]){
-									var setUpData = navigator.vehicle[interfaceName].get(zone);
-									if (setUpData !== undefined)
-										self.onDataUpdate(setUpData, self, id);
+						if (typeof (navigator.vehicle) !== 'undefined') {
+							if (typeof (navigator.vehicle[interfaceName]) !== "undefined") {
+								if (!(interfaceName.toString().trim().toLowerCase() === "nightmode" && id === this._listenerIDs[0])) {
+									if (navigator.vehicle[interfaceName]){
+										var setUpData = navigator.vehicle[interfaceName].get(zone);
+										if (setUpData !== undefined)
+											self.onDataUpdate(setUpData, self, id);
+									}
 								}
-							}
-							if (typeof (navigator.vehicle[interfaceName].subscribe) !== "undefined")
-							{
-								console.log("Modello: Subscribing to AMB signal - " + interfaceName);
-								navigator.vehicle[interfaceName].subscribe(subscribeCallback, zone);
+								if (typeof (navigator.vehicle[interfaceName].subscribe) !== "undefined")
+								{
+									console.log("Modello: Subscribing to AMB signal - " + interfaceName);
+									navigator.vehicle[interfaceName].subscribe(subscribeCallback, zone);
+								}
+							} else {
+								if (typeof (navigator.vehicle[interfaceName]) === "undefined")
+									console.warn(interfaceName + " is not available to subscribe to");
+								else
+									console.warn("Tizen API is not available, cannot subscribe to signal", signal);
 							}
 						} else {
-							if (typeof (navigator.vehicle[interfaceName]) === "undefined")
-								console.warn(interfaceName + " is not available to subscribe to");
-							else
-								console.warn("Tizen API is not available, cannot subscribe to signal", signal);
+							console.warn("Vehicle API is not available.");
 						}
 					}
 				}
@@ -606,8 +609,12 @@ CarIndicator.prototype.removeListener = function(aId) {
 					var mapping = this._mappingTable[signal];
 
 					if (mapping.subscribeCount === 0) { // Last signal, unscubscribe
-						navigator.vehicle.unsubscribe(signal);
-						mapping.subscribeCount = undefined;
+						if (typeof (navigator.vehicle) !== 'undefined') {
+							navigator.vehicle.unsubscribe(signal);
+							mapping.subscribeCount = undefined;
+						} else {
+							console.warn("Vehicle API is not available.");
+						}
 					} else if (typeof (mapping.subscribeCount) !== 'undefined') {
 						mapping.subscribeCount--;
 					}
@@ -699,9 +706,13 @@ CarIndicator.prototype.setStatus = function(indicator, newValue, callback, zone)
 		propertyValue[mappingProperty] = newValue;
 		propertyValue.zone = propertyZone;
 
-		navigator.vehicle.set(objectName, propertyValue, function(msg) {
-			console.error("Set error: " + msg);
-		});
+		if (typeof (navigator.vehicle) !== 'undefined') {
+			navigator.vehicle.set(objectName, propertyValue, function(msg) {
+				console.error("Set error: " + msg);
+			});
+		} else {
+			console.warn("Vehicle API is not available.");
+		}
 	}
 	if (!!callback) {
 		callback();

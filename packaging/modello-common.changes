@@ -1,3 +1,6 @@
+* Wed Dec 03 2014 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20141202.054026-1-ge06950b
+- Added sanity check before calling Vehicle api
+
 * Mon Dec 01 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141124.011535-1-gcbe85dc
 - Changed to use the navigator.vehicle namespace - TC-2055
 
