@@ -1,3 +1,6 @@
+* Fri Dec 12 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141204.025516-1-gb36e67a
+- Updates to utilize AMB set calls
+
 * Wed Dec 03 2014 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20141202.054026-1-ge06950b
 - Added sanity check before calling Vehicle api
 

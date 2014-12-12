@@ -220,15 +220,15 @@ CarIndicator.prototype._mappingTable = {
 		attributeName : "targetTemperature",
 		callBackPropertyName : "targetTemperatureRight",
 		interfaceName : "climateControl",
-		conversionFunction : parseInteger
-		//zone : new Zone(["Right"])
+		conversionFunction : parseInteger,
+		zone : new Zone(["front", "right"])
 	},
 	"TargetTemperatureLeft" : {
 		attributeName : "targetTemperature",
 		callBackPropertyName : "targetTemperatureLeft",
 		interfaceName : "climateControl",
-		conversionFunction : parseInteger
-		//zone : new Zone(["Left"])
+		conversionFunction : parseInteger,
+		zone : new Zone(["front", "left"])
 	},
 	"Hazard" : {
 		attributeName : "hazard",
@@ -243,14 +243,14 @@ CarIndicator.prototype._mappingTable = {
 	"SeatHeaterRight" : {
 		attributeName : "seatHeater",
 		callBackPropertyName : "seatHeaterRight",
-		interfaceName : "climateControl"
-		//zone : new Zone(["Right"])
+		interfaceName : "climateControl",
+		zone : new Zone(["front", "right"])
 	},
 	"SeatHeaterLeft" : {
 		attributeName : "seatHeater",
 		callBackPropertyName : "seatHeaterLeft",
-		interfaceName : "climateControl"
-		//zone : new Zone(["Left"])
+		interfaceName : "climateControl",
+		zone : new Zone(["front", "left"])
 	},
 	"Parking" : {
 		attributeName : "parking",
@@ -317,7 +317,7 @@ CarIndicator.prototype._mappingTable = {
 		}
 	},
 	"VehicleSpeed" : {
-		attributeName : "vehicleSpeed",
+		attributeName : "speed",
 		callBackPropertyName : "speed",
 		interfaceName : "vehicleSpeed",
 		conversionFunction : parseInteger
@@ -405,29 +405,21 @@ CarIndicator.prototype._mappingTable = {
 		//interfaceName : "FrontTSetLeftCmd"
 	},
 	"FrontBlwrSpeedCmd" : {
-		attributeName : "FrontBlwrSpeedCmd",
+		attributeName : "fanSpeedLevel",
 		callBackPropertyName : "FrontBlwrSpeedCmd",
-		//interfaceName : "FrontBlwrSpeedCmd"
-	},
-	"HeatedSeatFRModeRequest" : {
-		attributeName : "HeatedSeatFRModeRequest",
-		callBackPropertyName : "HeatedSeatFRModeRequest",
-		//interfaceName : "HeatedSeatFRModeRequest"
+		interfaceName : "climateControl"
 	},
 	"HeatedSeatFRRequest" : {
-		attributeName : "HeatedSeatFRRequest",
+		attributeName : "seatHeater",
 		callBackPropertyName : "HeatedSeatFRRequest",
-		//interfaceName : "HeatedSeatFRRequest"
-	},
-	"HeatedSeatFLModeRequest" : {
-		attributeName : "HeatedSeatFLModeRequest",
-		callBackPropertyName : "HeatedSeatFLModeRequest",
-		//interfaceName : "HeatedSeatFLModeRequest"
+		interfaceName : "climateControl",
+		zone : new Zone(["front", "right"])
 	},
 	"HeatedSeatFLRequest" : {
-		attributeName : "HeatedSeatFLRequest",
+		attributeName : "seatHeater",
 		callBackPropertyName : "HeatedSeatFLRequest",
-		//interfaceName : "HeatedSeatFLRequest"
+		interfaceName : "climateControl",
+		zone : new Zone(["front", "left"])
 	},
 	"FLHSDistrCmd" : {
 		attributeName : "FLHSDistrCmd",
@@ -532,13 +524,14 @@ CarIndicator.prototype.onDataUpdate = function(data, self, lisenersID) {
 					for ( var element in self._mappingTable) {
 						if (self._mappingTable.hasOwnProperty(element) && self._mappingTable[element].interfaceName !== undefined) {
 							if (self._mappingTable[element].interfaceName.toLowerCase() === data.interfaceName.toLowerCase() &&
-								self._mappingTable[element].attributeName.toLowerCase() === property.toLowerCase()) {
-								/* jshint bitwise: false */
-								if (!(zone ^ self._mappingTable[element].zone)) {
-									/* jshint bitwise: true */
+								self._mappingTable[element].attributeName.toLowerCase() === property.toLowerCase() &&
+								((!self._mappingTable[element].zone && !data.zone) ||
+									((self._mappingTable[element].zone && data.zone) &&
+										(typeof(self._mappingTable[element].zone.equals) === typeof(data.zone.equals)) &&
+										self._mappingTable[element].zone.equals(data.zone)))
+								) {
 									mapping = self._mappingTable[element];
 									break;
-								}
 							}
 						}
 					}
@@ -684,7 +677,7 @@ CarIndicator.prototype.getStatus = function(callback) {
  * @param text_status {string} new status .
  * @param callback {function} callback function.
  */
-CarIndicator.prototype.setStatus = function(indicator, newValue, callback, zone) {
+CarIndicator.prototype.setStatus = function(indicator, newValue, zone) {
 	"use strict";
 	var mappingElement, mappingProperty;
 	for ( var element in this._mappingTable) {
@@ -707,14 +700,22 @@ CarIndicator.prototype.setStatus = function(indicator, newValue, callback, zone)
 		propertyValue.zone = propertyZone;
 
 		if (typeof (navigator.vehicle) !== 'undefined') {
-			navigator.vehicle.set(objectName, propertyValue, function(msg) {
-				console.error("Set error: " + msg);
-			});
+			if (typeof (navigator.vehicle[objectName]) !== 'undefined' && typeof (navigator.vehicle[objectName].set) !== 'undefined') {
+				console.log("trying to set: " + objectName + "." + mappingProperty + " in zone " + mappingElement.zone.value + " to " + newValue);
+				var value = {};
+				value[mappingProperty] = newValue;
+				navigator.vehicle[objectName].set(value, mappingElement.zone).then(function() {
+				    console.log("Set success!");
+				}, function(error) {
+				    console.log("Set failed! " + error.message);
+				});
+			}
+			else
+				console.error("Can't set status for " + objectName + " because it doesn't exist " + indicator);
+
 		} else {
 			console.warn("Vehicle API is not available.");
 		}
 	}
-	if (!!callback) {
-		callback();
-	}
+
 };
