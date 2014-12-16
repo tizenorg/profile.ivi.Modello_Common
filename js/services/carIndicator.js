@@ -98,6 +98,12 @@ function parseInteger(value) {
 	return parseInt(value, 10);
 }
 
+function kmhToMph(value) {
+	"use strict";
+	var kmh = parseInteger(value);
+	return Math.floor(kmh * 0.621371);
+}
+
 function parseTirePressure(value) {
 	"use strict";
 	var floatValue = parseFloat(value).toFixed(2);
@@ -201,14 +207,14 @@ CarIndicator.prototype._mappingTable = {
 	"FrontDefrost" : {
 		attributeName : "defrostWindow",
 		callBackPropertyName : "frontDefrost",
-		interfaceName : "defrost"
-		//zone : new Zone(["Front"])
+		interfaceName : "defrost",
+		zone : new Zone(["front"])
 	},
 	"RearDefrost" : {
 		attributeName : "defrostWindow",
 		callBackPropertyName : "rearDefrost",
-		interfaceName : "defrost"
-		//zone : new Zone(["Rear"])
+		interfaceName : "defrost",
+		zone : new Zone(["rear"])
 	},
 	"FanSpeed" : {
 		attributeName : "fanSpeedLevel",
@@ -268,7 +274,7 @@ CarIndicator.prototype._mappingTable = {
 		interfaceName : "climateControl"
 	},
 	"AirflowDirection" : {
-		attributeName : "airflowDirection",
+		attributeName : "airflowDirectionW3C",
 		callBackPropertyName : "airflowDirection",
 		interfaceName : "climateControl",
 		conversionFunction : parseInteger
@@ -320,7 +326,7 @@ CarIndicator.prototype._mappingTable = {
 		attributeName : "speed",
 		callBackPropertyName : "speed",
 		interfaceName : "vehicleSpeed",
-		conversionFunction : parseInteger
+		conversionFunction : kmhToMph
 	},
 	"Odometer" : {
 		attributeName : "odometer",
@@ -405,9 +411,9 @@ CarIndicator.prototype._mappingTable = {
 		//interfaceName : "FrontTSetLeftCmd"
 	},
 	"FrontBlwrSpeedCmd" : {
-		attributeName : "fanSpeedLevel",
+		attributeName : "FrontBlwrSpeedCmd",
 		callBackPropertyName : "FrontBlwrSpeedCmd",
-		interfaceName : "climateControl"
+		//interfaceName : "FrontBlwrSpeedCmd"
 	},
 	"HeatedSeatFRRequest" : {
 		attributeName : "seatHeater",
@@ -525,7 +531,7 @@ CarIndicator.prototype.onDataUpdate = function(data, self, lisenersID) {
 						if (self._mappingTable.hasOwnProperty(element) && self._mappingTable[element].interfaceName !== undefined) {
 							if (self._mappingTable[element].interfaceName.toLowerCase() === data.interfaceName.toLowerCase() &&
 								self._mappingTable[element].attributeName.toLowerCase() === property.toLowerCase() &&
-								((!self._mappingTable[element].zone && !data.zone) ||
+								((!self._mappingTable[element].zone && (!data.zone || data.zone.value.length === 0)) ||
 									((self._mappingTable[element].zone && data.zone) &&
 										(typeof(self._mappingTable[element].zone.equals) === typeof(data.zone.equals)) &&
 										self._mappingTable[element].zone.equals(data.zone)))
@@ -691,17 +697,13 @@ CarIndicator.prototype.setStatus = function(indicator, newValue, zone) {
 		}
 	}
 
-	// this.status[indicator] = status === "true";
 	if (mappingProperty !== undefined) {
 		var objectName = mappingElement.interfaceName;
-		var propertyZone = parseInt(mappingElement.zone, 2);
-		var propertyValue = {};
-		propertyValue[mappingProperty] = newValue;
-		propertyValue.zone = propertyZone;
+		var zoneValue = (mappingElement.zone && mappingElement.zone.value) ? mappingElement.zone.value : undefined;
 
 		if (typeof (navigator.vehicle) !== 'undefined') {
 			if (typeof (navigator.vehicle[objectName]) !== 'undefined' && typeof (navigator.vehicle[objectName].set) !== 'undefined') {
-				console.log("trying to set: " + objectName + "." + mappingProperty + " in zone " + mappingElement.zone.value + " to " + newValue);
+				console.log("trying to set: " + objectName + "." + mappingProperty + " in zone " + zoneValue + " to " + newValue);
 				var value = {};
 				value[mappingProperty] = newValue;
 				navigator.vehicle[objectName].set(value, mappingElement.zone).then(function() {

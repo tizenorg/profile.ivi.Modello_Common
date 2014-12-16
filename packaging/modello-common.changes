@@ -1,3 +1,6 @@
+* Mon Dec 15 2014 Brian Jones <brian.j.jones@intel.com> submit/tizen_ivi/20141212.235817-1-g0b0f343
+- More set commands being implemented. Defrost, fanspeed, seat heater, and hazard. Also adding kmh -> mph conversion
+
 * Fri Dec 12 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141204.025516-1-gb36e67a
 - Updates to utilize AMB set calls
 
