@@ -100,6 +100,10 @@
 	width: 200px;
 }
 
+.subPanelToggleButtonExtraWide {
+	width: 300px;
+}
+
 .buttonsArea {
 	width: 680px;
 	margin-top: 20px;

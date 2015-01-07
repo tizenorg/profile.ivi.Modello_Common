@@ -1,3 +1,6 @@
+* Wed Jan 07 2015 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20141217.011338-1-g18f9718
+- Add button in Theme settings to toggle Homescreen animation
+
 * Tue Dec 16 2014 Brian Jones <brian.j.jones@intel.com> accepted/tizen/ivi/20141216.021121-1-g82ba2df
 - Adding new fonts to Modello that work with xwalk
 

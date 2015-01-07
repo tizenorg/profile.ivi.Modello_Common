@@ -17,6 +17,8 @@
  */
 var Themes = function() {
 	"use strict";
+	var self = this;
+
 	/**
 	 * Marks a given user theme as selected.
 	 *
@@ -28,6 +30,13 @@ var Themes = function() {
 			ThemeEngine.setUserTheme(theme.id);
 		}
 	};
+
+	this.toggleAnimation = function() {
+		var animation = Configuration.get("animationEnabled");
+		Configuration.set("animationEnabled", !animation);
+		animation = Configuration.get("animationEnabled");
+		self.animationEnabled(animation);
+	}
 
 	this.init();
 };
@@ -81,6 +90,21 @@ Themes.prototype.show = function() {
 			themeList += templateName;
 			themeList += '\', foreach: Settings.Theme.themes }"></div>';
 			$(themeList).appendTo($('.' + themesContent));
+
+			var animation = Configuration.get("animationEnabled");
+			if (animation === undefined) {
+				animation = true;
+			}
+			Configuration.set("animationEnabled", animation);
+			self.animationEnabled(animation);
+
+			var button = "";
+			button = '<div id="animationButton" class="toggleButton subPanelToggleButton subPanelToggleButtonExtraWide" data-bind="click: Settings.Theme.toggleAnimation">';
+			button += '<div class="bgColorThemeTransparent boxShadowInset toggleButtonBackground"></div>';
+			button += '<div class="fontColorNormal fontSizeMedium fontWeightBold toggleButtonText" data-bind="text: Settings.Theme.animationEnabled() ? \'TURN OFF ANIMATION\' : \'TURN ON ANIMATION\'"></div>';
+			button += '</div>';
+			$(button).appendTo($('.tabsTopSubPanel'));
+
 			ko.applyBindings(window.Settings);
 		}
 	};
@@ -112,4 +136,14 @@ Themes.prototype.loadThemes = function(successCallback) {
 			}
 		});
 	}
+
+/**
+ * Indicates if animation is enabled
+ *
+ * @property animationEnabled
+ * @public
+ * @type ko.observable
+ * @default true
+ */
+Themes.prototype.animationEnabled = ko.observable(true);
 };
