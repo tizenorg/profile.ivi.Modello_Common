@@ -23,9 +23,6 @@ var Bluetooth = function() {
 	self.registerDefaultAdapterChangeListener();
 
 	self.loadBluetoothConfig();
-	Configuration.addUpdateListener(function() {
-		self.loadBluetoothConfig();
-	});
 
 	self.registerSelectedRemoteDeviceChangeListener();
 	self.loadSelectedRemoteDevice();

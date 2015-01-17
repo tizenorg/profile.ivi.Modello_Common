@@ -1,3 +1,6 @@
+* Fri Jan 16 2015 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20150114.045446-1-g576725e
+- Fix TC-2354 - The paired bt device is lost
+
 * Wed Jan 07 2015 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20141217.011338-1-g18f9718
 - Add button in Theme settings to toggle Homescreen animation
 
