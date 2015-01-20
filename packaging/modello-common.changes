@@ -1,3 +1,6 @@
+* Tue Jan 20 2015 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20150117.065356-1-g1309e9d
+- Update to latest touchSwipe library to fix touchevent issues
+
 * Fri Jan 16 2015 Jimmy Huang <jimmy.huang@intel.com> accepted/tizen/ivi/20150114.045446-1-g576725e
 - Fix TC-2354 - The paired bt device is lost
 
